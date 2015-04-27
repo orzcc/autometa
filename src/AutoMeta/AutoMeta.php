@@ -94,7 +94,7 @@ class AutoMeta implements MetaTagsContract
         endif;
 
         if(!empty($description)):
-            $html[] = "<meta name=\"description\"  content=\"{$description}\" />";
+            $html[] = "<meta name=\"description\" content=\"{$description}\" />";
         endif;
 
         if (!empty($keywords)):
