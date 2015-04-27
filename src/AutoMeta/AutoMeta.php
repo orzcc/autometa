@@ -93,8 +93,8 @@ class AutoMeta implements MetaTagsContract
             $html[] = "<title>$title</title>";
         endif;
 
-        if($title):
-            $html[] = "<meta name=\"description\" itemprop=\"description\" content=\"{$description}\" />";
+        if(!empty($description)):
+            $html[] = "<meta name=\"description\"  content=\"{$description}\" />";
         endif;
 
         if (!empty($keywords)):
@@ -115,19 +115,22 @@ class AutoMeta implements MetaTagsContract
      * Sets the title
      *
      * @param string $title
+     * @param string $suffix
+     * @param boolean $has_suffix
      *
      * @return MetaTagsContract
      */
-    public function setTitle($title)
+    public function setTitle($title, $suffix='', $has_suffix=true)
     {
         // clean title
         $title = strip_tags($title);
+        $suffix = strip_tags($suffix);
 
         // store title session
         $this->title_session = $title;
 
         // store title
-        $this->title = $this->parseTitle($title);
+        $this->title = $this->parseTitle($title, $suffix, $has_suffix);
 
         return $this;
     }
@@ -289,12 +292,19 @@ class AutoMeta implements MetaTagsContract
      * Get parsed title.
      *
      * @param string $title
+     * @param string @suffix
      *
      * @return string
      */
-    protected function parseTitle($title)
+    protected function parseTitle($title, $suffix, $has_suffix)
     {
-        return $this->config->get('defaults.title') ? $title . $this->getTitleSeperator() . $this->config->get('defaults.title', null) : $title;
+        if (!$has_suffix):
+            return $title;
+        elseif(!empty($suffix)):
+            return $title . $this->getTitleSeperator() . $suffix;
+        else:
+            return $this->config->get('defaults.title') ? $title . $this->getTitleSeperator() . $this->config->get('defaults.title', null) : $title;
+        endif;
     }
 
     protected function loadWebMasterTags()
