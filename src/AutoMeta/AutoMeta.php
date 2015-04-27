@@ -294,7 +294,7 @@ class AutoMeta implements MetaTagsContract
      */
     protected function parseTitle($title)
     {
-        return $title . $this->getTitleSeperator() . $this->config->get('defaults.title', null);
+        return $this->config->get('defaults.title') ? $title . $this->getTitleSeperator() . $this->config->get('defaults.title', null) : $title;
     }
 
     protected function loadWebMasterTags()
