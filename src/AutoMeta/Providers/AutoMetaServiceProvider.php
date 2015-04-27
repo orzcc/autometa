@@ -35,7 +35,7 @@ class AutoMetaServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('autometa', function ($app) {
-            return new AutoMeta($app['config']->get('meta', []));
+            return new AutoMeta($app['config']->get('autometa', []));
         });
 
         $this->app->bind('Orzcc\AutoMeta\Contracts\MetaTags', 'Orzcc\AutoMeta\MetaTags');
