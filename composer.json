@@ -1,0 +1,30 @@
+{
+  "name": "orzcc/autometa",
+  "description": "A Meta Tool for Laravel",
+  "keywords": ["laravel5", "seo", "meta"],
+  "license": "MIT",
+  "authors": [
+      {
+          "name": "orzcc",
+          "email": "orzcczh@gmail.com"
+      }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/config": "~5",
+    "illuminate/support": "~5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*",
+    "phpspec/phpspec": "2.1.x"
+  },
+  "autoload": {
+    "psr-4": {
+      "Orzcc\\AutoMeta\\": "src/AutoMeta/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "minimum-stability": "dev"
+}
